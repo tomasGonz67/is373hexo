@@ -38,8 +38,6 @@ jobs:
         run: |
           cd IS373-Playwright
           npm install
+          run: node test.js 
 
-      # Run Playwright tests
-      - name: Run Playwright tests
-        run: node test.js  # This assumes you are in the IS373-Playwright directory
   
