@@ -24,14 +24,7 @@ jobs:
           node-version: '20'  # Specify your Node.js version
           cache: 'npm'
 
-      - name: Install Hexo and dependencies
-        run: |
-          npm install hexo-cli -g
-          npm install
 
-      # Generate the static website
-      - name: Generate Hexo site
-        run: hexo generate
 
       - name: Clone Playwright test repository
         run: |
