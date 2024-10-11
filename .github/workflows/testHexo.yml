@@ -31,6 +31,7 @@ jobs:
 
       - name: install hexo stuff and go
         run: |
+            npm install
             npm install hexo-cli -g
             hexo server
             
