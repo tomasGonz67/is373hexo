@@ -34,7 +34,7 @@ jobs:
       # Install Playwright dependencies
       - name: Install Playwright dependencies
         run: |
-          cd IS373-Playwright
+          sudo cd IS373-Playwright
           npm install
           npx playwright install
 
