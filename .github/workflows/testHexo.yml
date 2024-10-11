@@ -29,6 +29,12 @@ jobs:
           node-version: '20'  # Specify your Node.js version
           cache: 'npm'
 
+      - name: install hexo stuff and go
+        run: |
+            npm install hexo-cli -g
+            hexo server
+            
+
       # Checkout the Playwright test repository
       - name: Checkout Playwright test repository
         uses: actions/checkout@v4
