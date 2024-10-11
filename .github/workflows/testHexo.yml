@@ -32,11 +32,17 @@ jobs:
           npm install
 
 
-      # Checkout the Playwright test repository
-      - name: Checkout Playwright test repository
-        uses: actions/checkout@v4
-        with:
-          repository: vvh24/IS373-Playwright
-          run: node test.js
+
+              # Install Playwright dependencies
+      - name: Install Playwright dependencies
+        run: |
+          cd IS373-Playwright
+          npm install
+
+      # Run Playwright tests
+      - name: Run Playwright tests
+        run: |
+          cd IS373-Playwright
+          node test.js
 
   
