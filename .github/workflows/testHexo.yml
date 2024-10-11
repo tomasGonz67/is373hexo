@@ -1,0 +1,49 @@
+name: Test and Deploy Hexo Site
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the Hexo website repository
+      - name: Checkout Hexo repository
+        uses: actions/checkout@v4
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Specify your Node.js version
+          cache: 'npm'
+
+      - name: Install Hexo and dependencies
+        run: |
+          npm install hexo-cli -g
+          npm install
+
+      # Generate the static website
+      - name: Generate Hexo site
+        run: hexo generate
+
+      - name: Clone Playwright test repository
+        run: |
+          git clone https://github.com/vvh24/IS373-Playwright.git
+          npm install
+
+
+      # Checkout the Playwright test repository
+      - name: Checkout Playwright test repository
+        uses: actions/checkout@v4
+        with:
+          repository: vvh24/IS373-Playwright
+          run: node test.js
+
+  
