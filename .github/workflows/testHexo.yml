@@ -31,17 +31,10 @@ jobs:
           repository: vvh24/IS373-Playwright
           path: IS373-Playwright  # Check out into the specified path
 
-      # Install Playwright dependencies
-      - name: Install Playwright dependencies
-        run: |
-          sudo cd IS373-Playwright
-          npm install
-          npx playwright install
-
-      # Run Playwright tests
-      - name: Run Playwright tests
+      # Install Playwright dependencies and run tests
+      - name: Install Playwright dependencies and run tests
         run: |
           cd IS373-Playwright
+          npm install
+          npx playwright install
           node test.js
-
-  
