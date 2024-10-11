@@ -26,14 +26,14 @@ jobs:
 
 
 
-      - name: Clone Playwright test repository
-        run: |
-          git clone https://github.com/vvh24/IS373-Playwright.git
-          npm install
+      # Checkout the Playwright test repository
+      - name: Checkout Playwright test repository
+        uses: actions/checkout@v4
+        with:
+          repository: vvh24/IS373-Playwright
+          path: IS373-Playwright  # Check out into the specified path
 
-
-
-              # Install Playwright dependencies
+      # Install Playwright dependencies
       - name: Install Playwright dependencies
         run: |
           cd IS373-Playwright
@@ -41,8 +41,5 @@ jobs:
 
       # Run Playwright tests
       - name: Run Playwright tests
-        run: |
-          cd IS373-Playwright
-          node test.js
-
+        run: node test.js  # This assumes you are in the IS373-Playwright directory
   
