@@ -61,3 +61,36 @@ jobs:
           npm install
           npx playwright install
           node test.js
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-test  # Ensure deployment only happens if the tests pass
+    if: github.event_name == 'push'
+
+    steps:
+      # Checkout the Hexo repository again (to prevent loss of state)
+      - name: Checkout Hexo repository
+        uses: actions/checkout@v4
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Ensure the Node.js version matches
+
+      # Install Hexo and dependencies
+      - name: Install Hexo dependencies
+        run: |
+          npm install
+          npm install hexo-cli -g
+
+      # Generate the static website
+      - name: Generate Hexo site
+        run: hexo generate
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public  # Hexo outputs the generated files to the 'public' directory
