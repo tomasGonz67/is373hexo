@@ -36,6 +36,11 @@ jobs:
           repository: vvh24/IS373-Playwright
           path: IS373-Playwright  # Check out into the specified path
 
+            # Fix permissions for IS373-Playwright directory
+      - name: Fix Permissions
+        run: |
+          sudo chmod -R 755 IS373-Playwright
+
       - name: Check current directory
         run: |
           pwd
