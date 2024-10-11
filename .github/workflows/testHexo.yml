@@ -24,8 +24,6 @@ jobs:
           node-version: '20'  # Specify your Node.js version
           cache: 'npm'
 
-
-
       # Checkout the Playwright test repository
       - name: Checkout Playwright test repository
         uses: actions/checkout@v4
@@ -38,6 +36,11 @@ jobs:
         run: |
           cd IS373-Playwright
           npm install
-          run: node test.js 
+
+      # Run Playwright tests
+      - name: Run Playwright tests
+        run: |
+          cd IS373-Playwright
+          node test.js
 
   
