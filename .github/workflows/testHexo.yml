@@ -36,6 +36,7 @@ jobs:
         run: |
           cd IS373-Playwright
           npm install
+          npx playwright install
 
       # Run Playwright tests
       - name: Run Playwright tests
