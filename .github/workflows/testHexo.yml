@@ -16,6 +16,11 @@ jobs:
       # Checkout the Hexo website repository
       - name: Checkout Hexo repository
         uses: actions/checkout@v4
+          
+      - name: Check current directory
+        run: |
+          pwd
+          ls -la
 
       # Set up Node.js environment
       - name: Set up Node.js
@@ -30,6 +35,11 @@ jobs:
         with:
           repository: vvh24/IS373-Playwright
           path: IS373-Playwright  # Check out into the specified path
+
+      - name: Check current directory
+        run: |
+          pwd
+          ls -la
 
       # Install Playwright dependencies and run tests
       - name: Install Playwright dependencies and run tests
