@@ -1,0 +1,26 @@
+# Use Node.js as the base image
+FROM node:20
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the Hexo project files
+COPY . .
+
+# Install Hexo CLI globally
+RUN npm install -g hexo-cli
+
+# Generate the static files
+RUN hexo generate
+
+# Expose port 4000 (if you want to run the server)
+EXPOSE 4000
+
+# Command to start the Hexo server (optional)
+CMD ["hexo", "server", "-p", "4000"]
