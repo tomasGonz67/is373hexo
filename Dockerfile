@@ -23,4 +23,4 @@ RUN hexo generate
 EXPOSE 4000
 
 # Command to start the Hexo server (optional)
-CMD ["hexo", "server", "-p", "4000"]
+
