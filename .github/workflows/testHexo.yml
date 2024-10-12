@@ -16,26 +16,26 @@ jobs:
       # Checkout the Hexo website repository
       - name: Checkout Hexo repository
         uses: actions/checkout@v4
-          
+
+      # Check current directory
       - name: Check current directory
         run: |
           pwd
           ls -la
 
-      # Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'  # Specify your Node.js version
-          cache: 'npm'
-
-      - name: install hexo stuff and go
+      # Build the Docker image
+      - name: Build Docker Image
         run: |
-            npm install
-            npm install hexo-cli -g
-            hexo server &  # Run the server in the background
-            sleep 5        # Wait for a few seconds to ensure the server is up
-            
+          docker build -t hexo-site .
+
+      # Run the Docker container and test
+      - name: Run Docker Container and Test
+        run: |
+          docker run -d --name hexo-container -p 4000:4000 hexo-site
+          sleep 5  # Wait for the server to start
+          docker exec hexo-container npm install hexo-cli -g
+          docker exec hexo-container hexo server &
+          sleep 5  # Wait for the server to be fully up
 
       # Checkout the Playwright test repository
       - name: Checkout Playwright test repository
@@ -44,11 +44,12 @@ jobs:
           repository: vvh24/IS373-Playwright
           path: IS373-Playwright  # Check out into the specified path
 
-            # Fix permissions for IS373-Playwright directory
+      # Fix permissions for IS373-Playwright directory
       - name: Fix Permissions
         run: |
           sudo chmod -R 755 IS373-Playwright
 
+      # Check current directory
       - name: Check current directory
         run: |
           pwd
@@ -72,21 +73,14 @@ jobs:
       - name: Checkout Hexo repository
         uses: actions/checkout@v4
 
-      # Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'  # Ensure the Node.js version matches
-
-      # Install Hexo and dependencies
-      - name: Install Hexo dependencies
+      # Build the Docker image for deployment
+      - name: Build Docker Image for Deployment
         run: |
-          npm install
-          npm install hexo-cli -g
+          docker build -t hexo-site .
 
       # Generate the static website
       - name: Generate Hexo site
-        run: hexo generate
+        run: docker run --rm hexo-site hexo generate
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
