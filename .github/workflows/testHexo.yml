@@ -31,7 +31,7 @@ jobs:
       # Run the Docker container and test
       - name: Run Docker Container and Test
         run: |
-          docker run -d --name hexo-container -p 4000:4000 hexo-site
+          docker run -d --name hexo-container -p 4000:4000 hexo-site hexo server -p 4000 --host 0.0.0.0
           sleep 5  # Wait for the server to be fully up
 
       # Checkout the Playwright test repository
@@ -75,13 +75,7 @@ jobs:
         run: |
           docker build -t hexo-site .
 
-      # Generate the static website
-      - name: Generate Hexo site
-        run: docker run --rm hexo-site hexo deploy
-
-      # Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./public  # Hexo outputs the generated files to the 'public' directory
+    # Deploy Hexo using the built image
+      - name: Deploy Hexo
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/usr/src/app hexo-site hexo deploy
