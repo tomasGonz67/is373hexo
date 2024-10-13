@@ -73,7 +73,7 @@ jobs:
           # Clone the other repository with Markdown files
       - name: Clone Markdown Repository
         run: |
-          git clone https://github.com/tomasGonz67/is373.git is373
+          git clone --branch dev https://github.com/tomasGonz67/is373.git is373
 
       # Copy Markdown files into the Hexo source/_posts directory
       - name: Copy Markdown Files
