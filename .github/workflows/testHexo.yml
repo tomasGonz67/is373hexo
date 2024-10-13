@@ -75,9 +75,7 @@ jobs:
         run: |
           docker build -t hexo-site .
 
-      # Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./public  # Hexo outputs the generated files to the 'public' directory
+    # Deploy Hexo using the built image
+      - name: Deploy Hexo
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/usr/src/app hexo-site hexo deploy
