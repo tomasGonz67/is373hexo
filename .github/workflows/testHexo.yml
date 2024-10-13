@@ -78,5 +78,6 @@ jobs:
     # Deploy Hexo using the built image.
       - name: Deploy Hexo
         run: |
-            docker run --name hexo-container hexo-site hexo deploy
-
+            docker run --rm -v ${{ github.workspace }}:/usr/src/app \
+            -e GITHUB_TOKEN=${{ secrets.GH_TOKEN }} \
+            hexo-site sh -c "npm install && npm install hexo-deployer-git --save && hexo deploy"
