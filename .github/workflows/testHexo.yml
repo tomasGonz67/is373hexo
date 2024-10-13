@@ -32,9 +32,6 @@ jobs:
       - name: Run Docker Container and Test
         run: |
           docker run -d --name hexo-container -p 4000:4000 hexo-site
-          sleep 5  # Wait for the server to start
-          docker exec hexo-container npm install hexo-cli -g
-          docker exec hexo-container hexo server &
           sleep 5  # Wait for the server to be fully up
 
       # Checkout the Playwright test repository
