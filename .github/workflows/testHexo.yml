@@ -78,4 +78,4 @@ jobs:
     # Deploy Hexo using the built image
       - name: Deploy Hexo
         run: |
-          docker run --rm -v  hexo-site hexo deploy
+          docker run --rm -v ${{ github.workspace }}:/usr/src/app hexo-site hexo deploy
