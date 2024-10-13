@@ -22,6 +22,7 @@ RUN npm install hexo-deployer-git --save
 # Generate the static files
 RUN hexo generate
 
+
 # Expose port 4000 (if you want to run the server)
 EXPOSE 4000
 
