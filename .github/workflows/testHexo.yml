@@ -75,9 +75,11 @@ jobs:
         run: |
           docker build -t hexo-site .
 
-      # Generate the static website
       - name: Generate Hexo site
-        run: docker run --rm hexo-site hexo generate
+        run: docker run --rm -v ${{ github.workspace }}:/usr/src/app hexo-site hexo generate
+
+      - name: Deploy Hexo
+        run: docker run --rm -v ${{ github.workspace }}:/usr/src/app hexo-site hexo deploy
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
