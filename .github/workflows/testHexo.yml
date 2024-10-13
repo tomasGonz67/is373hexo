@@ -70,10 +70,14 @@ jobs:
       - name: Checkout Hexo repository
         uses: actions/checkout@v4
 
-          # Clone the other repository with Markdown files
-      - name: Clone Markdown Repository
-        run: |
-          git clone --branch dev https://github.com/tomasGonz67/is373.git is373
+
+      # Checkout Markdown repository from the dev branch
+      - name: Checkout Markdown Repository
+        uses: actions/checkout@v4
+        with:
+          repository: tomasGonz67/is373
+          ref: dev  # Checkout the dev branch
+          path: is373  # Specify a path for this checkout
 
       # Copy Markdown files into the Hexo source/_posts directory
       - name: Copy Markdown Files
