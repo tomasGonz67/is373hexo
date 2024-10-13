@@ -1,6 +1,9 @@
 # Use Node.js as the base image
 FROM node:20
 
+# Set the Git user configuration
+RUN git config --global user.email "tpg3@njit.edu" && \
+    git config --global user.name "tomasGonz67"
 
 # Set the working directory
 WORKDIR /usr/src/app
