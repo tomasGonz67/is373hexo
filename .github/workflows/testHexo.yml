@@ -70,6 +70,16 @@ jobs:
       - name: Checkout Hexo repository
         uses: actions/checkout@v4
 
+          # Clone the other repository with Markdown files
+      - name: Clone Markdown Repository
+        run: |
+          git clone https://github.com/tomasGonz67/is373.git is373
+
+      # Copy Markdown files into the Hexo source/_posts directory
+      - name: Copy Markdown Files
+        run: |
+          cp is373/*.md source/_posts/
+
       # Build the Docker image for deployment
       - name: Build Docker Image for Deployment
         run: |
