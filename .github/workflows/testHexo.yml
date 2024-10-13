@@ -77,10 +77,7 @@ jobs:
 
       # Deploy Hexo using Docker
       - name: Deploy Hexo
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Ensure this secret is set in your GitHub repo
         run: |
-          docker run --rm \
-            -v ${{ github.workspace }}:/usr/src/app \
-            -e GITHUB_TOKEN=${{ secrets.GH_TOKEN }} \
-            hexo-site sh -c "npm install && hexo clean && hexo generate && hexo deploy"
+          docker run --rm -v ${{ github.workspace }}:/usr/src/app \
+          -e GITHUB_TOKEN=${{ secrets.GH_TOKEN }} \
+          hexo-site sh -c "npm install && npm install hexo-deployer-git --save && hexo clean && hexo deploy --repo https://${{ secrets.GH_TOKEN }}@github.com/tomasGonz67/is373hexo.git"
