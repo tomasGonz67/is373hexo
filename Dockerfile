@@ -1,6 +1,8 @@
 # Use Node.js as the base image
 FROM node:20
 
+RUN apt-get update && apt-get install -y git && apt-get clean
+
 # Set the working directory
 WORKDIR /usr/src/app
 
