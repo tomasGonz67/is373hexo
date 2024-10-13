@@ -17,7 +17,7 @@ COPY . .
 RUN npm install -g hexo-cli
 
 #install hexo deploy.
-RUN npm install hexo-deployer-git --save
+RUN npm install hexo-deploy-git --save
 
 # Generate the static files
 RUN hexo generate
