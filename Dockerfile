@@ -22,5 +22,3 @@ RUN hexo generate
 # Expose port 4000 (if you want to run the server)
 EXPOSE 4000
 
-# Command to start the Hexo server (optional)
-CMD ["hexo", "server", "-p", "4000", "--host", "0.0.0.0"]
