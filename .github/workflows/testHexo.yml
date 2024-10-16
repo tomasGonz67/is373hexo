@@ -24,7 +24,7 @@ jobs:
           ls -la
 
       # Build the Docker image
-      - name: Build Docker Image
+      - name: Build Docker Image.
         run: |
           docker build -t hexo-site .
 
