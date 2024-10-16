@@ -70,14 +70,28 @@ jobs:
       - name: Checkout Hexo repository
         uses: actions/checkout@v4
 
+
+      # Checkout Markdown repository from the dev branch
+      - name: Checkout Markdown Repository
+        uses: actions/checkout@v4
+        with:
+          repository: tomasGonz67/is373
+          ref: dev  # Checkout the dev branch
+          path: is373  # Specify a path for this checkout
+
+      # Copy Markdown files into the Hexo source/_posts directory
+      - name: Copy Markdown Files
+        run: |
+          cp is373/*.md source/_posts/
+
       # Build the Docker image for deployment
       - name: Build Docker Image for Deployment
         run: |
           docker build -t hexo-site .
 
-    # Deploy Hexo using the built image.
+      # Deploy Hexo using Docker
       - name: Deploy Hexo
         run: |
-            docker run --rm -v ${{ github.workspace }}:/usr/src/app \
-            -e GITHUB_TOKEN=${{ secrets.GH_TOKEN }} \
-            hexo-site sh -c "npm install && npm install hexo-deployer-git --save && hexo clean && hexo deploy"
+          docker run --rm -v ${{ github.workspace }}:/usr/src/app \
+          -e GITHUB_TOKEN=${{ secrets.GH_TOKEN }} \
+          hexo-site sh -c "npm install && npm install hexo-deployer-git --save && hexo clean && hexo deploy --repo https://${{ secrets.GH_TOKEN }}@github.com/tomasGonz67/is373hexo.git"
