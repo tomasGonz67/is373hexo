@@ -10,7 +10,8 @@ keywords:
 author: John Doe
 language: en
 timezone: ''
-recent_posts_limit: 15
+recent_posts:
+  count: 10
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project.'
