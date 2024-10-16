@@ -82,6 +82,7 @@ jobs:
       # Copy Markdown files into the Hexo source/_posts directory
       - name: Copy Markdown Files
         run: |
+          cp -r is373/img source
           cp is373/README.md source/_posts/
           cp is373/*.md source/_posts/
 
