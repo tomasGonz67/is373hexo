@@ -24,6 +24,8 @@ RUN npm install -g hexo-cli
 RUN npm install hexo-deployer-git --save
 
 # Generate the static files
+RUN hexo clean
+
 RUN hexo generate
 
 
