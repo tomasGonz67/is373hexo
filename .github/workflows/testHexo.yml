@@ -83,8 +83,8 @@ jobs:
       - name: Copy Markdown Files
         run: |
           cp -r is373/img source
-          cp is373/README.md source/_posts/
           cp is373/*.md source/_posts/
+          rm source/_posts/readme.md
 
       # Build the Docker image for deployment
       - name: Build Docker Image for Deployment
