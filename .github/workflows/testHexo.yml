@@ -80,7 +80,7 @@ jobs:
           path: is373  # Specify a path for this checkout
 
       # Copy Markdown files into the Hexo source/_posts directory
-      - name: Copy Markdown Files
+      - name: Copy Markdown Files.
         run: |
           cp is373/README.md source/_posts/
           cp is373/*.md source/_posts/
