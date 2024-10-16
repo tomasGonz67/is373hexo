@@ -8,7 +8,7 @@ RUN git config --global user.email "tpg3@njit.edu" && \
 # Set the working directory
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json.
 COPY package*.json ./
 
 # Install dependencies
