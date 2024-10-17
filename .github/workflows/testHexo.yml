@@ -83,7 +83,7 @@ jobs:
       - name: Copy Markdown Files
         run: |
           cp -r is373/img source
-          cp is373/*.md source
+          cp is373/*.md source/_posts
 
       # Build the Docker image for deployment
       - name: Build Docker Image for Deployment
