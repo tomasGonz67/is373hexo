@@ -28,7 +28,7 @@ jobs:
         run: |
           docker build -t hexo-site .
 
-      # Run the Docker container and test
+      # Run the Docker container and test.
       - name: Run Docker Container and Test
         run: |
           docker run -d --name hexo-container -p 4000:4000 hexo-site hexo server -p 4000 --host 0.0.0.0
