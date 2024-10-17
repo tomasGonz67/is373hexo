@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the Hexo website repository.
+      # Checkout the Hexo website repository
       - name: Checkout Hexo repository
         uses: actions/checkout@v4
 
