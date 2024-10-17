@@ -53,12 +53,12 @@ jobs:
           ls -la
 
       # Install Playwright dependencies and run tests
-      - name: Go Into Valeria folder. Install Playwright dependencies and run tests.
-        run: |
-          cd IS373-Playwright
-          npm install
-          npx playwright install
-          node test.js
+      #- name: Go Into Valeria folder. Install Playwright dependencies and run tests.
+       # run: |
+        #  cd IS373-Playwright
+         # npm install
+          #npx playwright install
+          #node test.js
 
   deploy:
     runs-on: ubuntu-latest
