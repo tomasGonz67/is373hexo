@@ -72,7 +72,7 @@ jobs:
 
 
       # Checkout Markdown repository from the dev branch
-      - name: Checkout Markdown Repository
+      - name: Checkout Markdown Repository.
         uses: actions/checkout@v4
         with:
           repository: tomasGonz67/is373
