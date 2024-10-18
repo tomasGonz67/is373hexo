@@ -84,7 +84,7 @@ jobs:
         run: |
           cp -r is373/img source
           cp is373/*.md source/_posts
-          rm /is373hexo/Hexo2024/10/18/hello-world/index.html
+          rm is373hexo/Hexo2024/10/18/hello-world/index.html
 
       # Build the Docker image for deployment
       - name: Build Docker Image for Deployment
