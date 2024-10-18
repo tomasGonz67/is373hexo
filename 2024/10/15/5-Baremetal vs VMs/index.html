@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Baremetal vs VMs | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Summary When it comes to hosting servers or other computing resources—such as database servers, OS simulations, and development&#x2F;testing tools—two common approaches are using Bare Metal servers or Virt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Baremetal vs VMs">
+<meta property="og:url" content="https://tomasgonz67.github.io/is373hexo/2024/10/15/5-Baremetal%20vs%20VMs/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Summary When it comes to hosting servers or other computing resources—such as database servers, OS simulations, and development&#x2F;testing tools—two common approaches are using Bare Metal servers or Virt">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-10-15T10:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-18T13:26:17.889Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/is373hexo/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/is373hexo/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/is373hexo/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/is373hexo/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/is373hexo/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/is373hexo/">Home</a>
+        
+          <a class="main-nav-link" href="/is373hexo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/is373hexo/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tomasgonz67.github.io/is373hexo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-5-Baremetal vs VMs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/is373hexo/2024/10/15/5-Baremetal%20vs%20VMs/" class="article-date">
+  <time class="dt-published" datetime="2024-10-15T10:00:00.000Z" itemprop="datePublished">2024-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Baremetal vs VMs
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1>Summary</h1>
+When it comes to hosting servers or other computing resources—such as database servers, OS simulations, and development/testing tools—two common approaches are using Bare Metal servers or Virtual Machines (VMs). Both methods offer distinct advantages and serve different purposes depending on the specific requirements of the workload.
+<h1>How Bare Metal Works</h1>
+Bare metal servers run directly on physical hardware, with no virtualization layer. The operating system installed on the server has full control over the hardware, and all resources are dedicated to the single instance running on that server.
+
+<h2>Pros</h2>
+<p>Maximum Performance: Without the hypervisor overhead, bare metal servers can fully utilize all hardware resources.</p>
+<p>Low Latency: Ideal for applications requiring real-time processing or high-speed data access since there’s no layer of abstraction between the hardware and software.</p>
+<p>Full Control: You have direct access to the hardware, allowing for deep customization and tuning.</p>
+
+<h2>Cons</h2>
+<p>Lack of Flexibility: You can only run one operating system per physical server. If you need to run multiple environments, you need multiple servers.</p>
+<p>Scalability Issues: Scaling requires the addition of more physical servers, which can be more complex and costly compared to creating new VMs.</p>
+<p>Underutilization Risk: If the workload doesn’t fully use the hardware, you’re paying for resources that aren’t being used.</p>
+
+<h1>How Virtual Machines Work</h1>
+VMs run on a hypervisor (type1- baremetal hypervisor or type2- hosted hypervisor), which is a software layer that sits on top of physical hardware and divides the hardware resources (CPU, memory, storage, etc.) among multiple virtual machines. Each VM can run its own operating system and applications independently, as though it were on a separate physical machine.
+
+<h2>Pros</h2>
+<p>Resource Sharing: Multiple VMs share the same physical server, leading to better hardware utilization.</p>
+<p>Isolation: Each VM is isolated, meaning one VM can fail without affecting others.</p>
+<p>Flexibility: Easily create, modify, and delete VMs to meet workload demands.</p>
+<p>Cost Efficiency: VMs allow multiple workloads to run on the same physical hardware, reducing the need for multiple servers.</p>
+
+
+<h2>Cons</h2>
+<p>Performance Overhead: The hypervisor introduces a slight performance hit since it mediates between the VMs and the physical hardware.</p>
+<p>Resource Contention: If too many VMs share the same physical resources, performance can degrade.</p>
+
+<h1> When to use each</h1>
+<h2>Bare Metal</h2>
+<p>You need the best performance possible for demanding workloads.</p>
+<p>You have specific hardware requirements or need deep customization.</p>
+<p>Latency and processing speed are critical to the application's performance.</p>
+
+<h2>Virtual Machines</h2>
+<p>You need to run multiple operating systems or applications on the same server.</p>
+<p>You want flexibility, scalability, and better resource management.</p>
+<p>You prioritize ease of management and deployment (especially in cloud environments).</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tomasgonz67.github.io/is373hexo/2024/10/15/5-Baremetal%20vs%20VMs/" data-id="cm2erkna100041uod5e2x9a2j" data-title="Baremetal vs VMs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/is373hexo/2024/10/15/4-Virtualization/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Virtualization
+        
+      </div>
+    </a>
+  
+  
+    <a href="/is373hexo/2024/10/15/6-Containerization%20vs%20Virtualization/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Containerization vs Virtualization</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/is373hexo/archives/2024/10/">October 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/is373hexo/2024/10/18/hello-world/">Welcome Page</a>
+          </li>
+        
+          <li>
+            <a href="/is373hexo/2024/10/15/1-README/">Table of Contents</a>
+          </li>
+        
+          <li>
+            <a href="/is373hexo/2024/10/15/2-Kernel/">Kernel</a>
+          </li>
+        
+          <li>
+            <a href="/is373hexo/2024/10/15/3-Containerization/">Containerization</a>
+          </li>
+        
+          <li>
+            <a href="/is373hexo/2024/10/15/4-Virtualization/">Virtualization</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/is373hexo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/is373hexo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/is373hexo/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/is373hexo/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/is373hexo/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
